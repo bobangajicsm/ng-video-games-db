@@ -1,26 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from './services/http.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'ng-video-games-db';
+  public games;
+
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    fetch("https://rawg-video-games-database.p.rapidapi.com/games", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "esGbwrm390mshS2BCl0RALxQRtZTp1W7sFMjsnyJlJzDXVkW0H",
-		"x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    this.httpService.getGameList().subscribe((gameList) => {
+      console.log(gameList);
+      this.games = gameList['results'];
+    });
   }
 }
