@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { HttpService } from './services/http.service';
 
 @Component({
@@ -12,9 +13,15 @@ export class AppComponent implements OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.httpService.getGameList().subscribe((gameList) => {
-      console.log(gameList);
+    this.httpService.getGameList('metacrit').subscribe((gameList) => {
       this.games = gameList['results'];
     });
   }
+
+  searchGames(search: string) {
+    this.httpService.getGameList('metacrit', search).subscribe((gameList) => {
+      this.games = gameList['results'];
+    })
+  }
+
 }

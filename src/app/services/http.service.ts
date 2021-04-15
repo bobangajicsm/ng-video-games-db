@@ -1,3 +1,7 @@
+
+
+
+
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -7,8 +11,12 @@ import { Injectable } from '@angular/core';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  getGameList() {
-    const params = new HttpParams().set('ordering', 'metacrit');
+  getGameList(ordering: string, search?: string) {
+    let params = new HttpParams().set('ordering', ordering);
+    console.log(search);
+    if (search) {
+      params = new HttpParams().set('ordering', ordering).set('search', search);
+    }
 
     return this.http.get(
       `https://rawg-video-games-database.p.rapidapi.com/games`,

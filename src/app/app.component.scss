@@ -2,15 +2,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
 .game {
-  width: 305px;
+  width: 280px;
   margin: 10px;
   height: 330px;
   overflow: hidden;
   border-radius: 5px;
   background-color: #202020;
+  box-shadow: 4px 3px 8px 0px rgb(200 152 44 / 22%);
 
   &-thumb-container {
     background-color: #000;
