@@ -1,0 +1,67 @@
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+  
+  .game {
+    width: 280px;
+    margin: 10px;
+    height: 330px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #202020;
+    box-shadow: 4px 3px 8px 0px rgb(200 152 44 / 22%);
+    transition-duration: .3s;
+    cursor: pointer;
+  
+    &:hover {
+      box-shadow: 4px 3px 11px 6px rgb(200 152 44 / 46%);
+      transform: translateY(-3px);
+    }
+  
+    &-thumb-container {
+      background-color: #000;
+      position: relative;
+      height: 172px;
+    }
+  
+    &-thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      height: 172px;
+    }
+  
+    &-description {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 157px;
+    }
+  
+    &-name {
+      color: #fff;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  
+    &-platforms {
+      display: flex;
+    }
+  
+    &-platform {
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+  

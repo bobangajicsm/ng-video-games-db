@@ -27,7 +27,7 @@
   &-button {
     border: none;
     outline: none;
-    background: #c8982c;
+    background: #3f51b5;
     padding: 10px;
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     border-top-right-radius: 5px;
@@ -38,9 +38,9 @@
     cursor: pointer;
 
     &:hover {
-        color: #c8982c;
+        color: #3f51b5;
         background-color: #fff;
-        border: 1px solid #c8982c;
+        border: 1px solid #3f51b5;
     }
   }
 }

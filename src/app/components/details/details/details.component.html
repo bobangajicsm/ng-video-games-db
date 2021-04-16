@@ -1,0 +1,84 @@
+<div *ngIf="game" class="details">
+  <div class="game-banner">
+    <img
+      class="game-banner-img"
+      src="{{ game.background_image }}"
+      alt="background image"
+    />
+  </div>
+  <div class="game-content">
+    <div class="details-wrapper">
+      <div class="game-header">
+        <h1 class="game-header-title">{{ game.name }}</h1>
+        <h2 class="game-header-release-date">
+          Release: {{ game.released | date }}
+        </h2>
+        <p class="game-header-genres">
+          <span *ngFor="let genre of game.genres; let last = last"
+            >{{ genre.name }}<span *ngIf="!last">, </span></span
+          >
+        </p>
+        <div class="game-gauge">
+          <mwl-gauge
+            class="two"
+            [max]="100"
+            [dialStartAngle]="180"
+            [dialEndAngle]="0"
+            [value]="gameRating"
+            [animated]="true"
+            [color]="getColor"
+            [animationDuration]="2"
+          >
+          </mwl-gauge>
+          <p class="game-gauge-label">Rating</p>
+        </div>
+      </div>
+      <div class="game-tabs">
+        <mat-tab-group mat-align-tabs="start" backgroundColor="primary">
+          <mat-tab label="About">
+            <p *ngIf="game.parent_platforms?.length" class="game-tabs-par">
+              Platforms:
+              <span *ngFor="let game of game.parent_platforms; let last = last"
+                >{{ game.platform.name }}<span *ngIf="!last">, </span></span
+              >
+            </p>
+            <p *ngIf="game.publishers?.length" class="game-tabs-par">
+              Publishers:
+              <span *ngFor="let publisher of game.publishers; let last = last"
+                >{{ publisher.name }}<span *ngIf="!last">, </span></span
+              >
+            </p>
+            <p *ngIf="game.website" class="game-tabs-par">
+              Website:
+              <a
+                class="game-tabs-link"
+                href="{{ game.website }}"
+                target="_blank"
+                >{{ game.website }}</a
+              >
+            </p>
+            <div class="game-description" [innerHTML]="game.description"></div>
+          </mat-tab>
+          <mat-tab label="Screenshots">
+            <img
+              class="game-screenshot"
+              *ngFor="let screenshot of game.screenshots"
+              src="{{ screenshot.image }}"
+              alt="screenshot"
+            />
+          </mat-tab>
+          <mat-tab label="Trailers">
+            <video
+              class="game-trailer"
+              *ngFor="let trailer of game.trailers"
+              controls
+            >
+              <source src="{{ trailer.data?.max }}" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
