@@ -27,7 +27,7 @@ export class DetailsComponent implements OnInit {
   getGameDetails(id: string) {
     this.httpService.getGameDetails(id).subscribe((gameResp) => {
       this.game = gameResp;
-
+      console.log(this.game);
       setTimeout(() => {
         this.gameRating = this.game.metacritic;
       }, 1000);

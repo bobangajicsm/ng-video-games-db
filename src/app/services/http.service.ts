@@ -13,7 +13,7 @@ export class HttpService {
 
   getGameList(ordering: string, search?: string) {
     let params = new HttpParams().set('ordering', ordering);
-    console.log(search);
+  
     if (search) {
       params = new HttpParams().set('ordering', ordering).set('search', search);
     }

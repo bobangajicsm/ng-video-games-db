@@ -4,14 +4,16 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #151515;
 }
 
 body * {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

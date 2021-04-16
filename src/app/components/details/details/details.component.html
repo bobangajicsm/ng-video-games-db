@@ -30,7 +30,7 @@
             [animationDuration]="2"
           >
           </mwl-gauge>
-          <p class="game-gauge-label">Rating</p>
+          <p class="game-gauge-label">Metacritic</p>
         </div>
       </div>
       <div class="game-tabs">
@@ -58,6 +58,10 @@
               >
             </p>
             <div class="game-description" [innerHTML]="game.description"></div>
+            <p class="game-tabs-votes">
+              <mat-icon class="game-votes-up">thumb_up</mat-icon><span class="game-votes-count">{{game.ratings[0]?.count || 0}}</span>
+              <mat-icon class="game-votes-down">thumb_down</mat-icon><span class="game-votes-count">{{game.ratings[3]?.count || 0}}</span>
+            </p>
           </mat-tab>
           <mat-tab label="Screenshots">
             <img

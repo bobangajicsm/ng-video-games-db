@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,17 +8,14 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-
-  @Output() gameSearched = new EventEmitter<string>();
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(form: NgForm) {
-    this.gameSearched.next(form.value.search);
-    console.log(form.value); 
+    this.router.navigate(['search', form.value.search]);
   }
 
 }

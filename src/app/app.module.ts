@@ -15,10 +15,17 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'search/:game-search',
     component: HomeComponent,
   },
   {
@@ -41,7 +48,10 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatTabsModule,
+    MatIconModule,
   ],
   providers: [
     {
