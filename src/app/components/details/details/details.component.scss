@@ -45,6 +45,8 @@
       font-size: 70px;
       color: #fff;
       font-weight: 700;
+      line-height: 70px;
+      white-space: nowrap;
     }
 
     &-release-date {
@@ -99,14 +101,14 @@
 
   .game-gauge {
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
     
     &-label {
       font-size: 20px;
       color: #fff;
       position: relative;
-      bottom: 50px;
+      bottom: 60px;
     }
   }
 }
