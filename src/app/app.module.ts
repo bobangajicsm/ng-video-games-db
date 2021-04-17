@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { DetailsComponent } from './components/details/details/details.component';
+import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
@@ -18,6 +18,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { GameTabsComponent } from './components/game-tabs/game-tabs.component';
+import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 
 const routes: Routes = [
   {
@@ -40,6 +42,7 @@ const routes: Routes = [
     SearchBarComponent,
     DetailsComponent,
     HomeComponent,
+    GameTabsComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,11 @@ const routes: Routes = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpParamsInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorsInterceptor,
       multi: true,
     },
   ],

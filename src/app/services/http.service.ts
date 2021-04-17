@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { concat, forkJoin, merge } from 'rxjs';
-import { concatMap, map, reduce } from 'rxjs/operators';
-
-const BASE_URL = 'https://rawg-video-games-database.p.rapidapi.com';
+import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment as env } from 'src/environments/environment';
+import { APIResponse, Game } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -11,21 +11,28 @@ const BASE_URL = 'https://rawg-video-games-database.p.rapidapi.com';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  getGameList(ordering: string, search?: string) {
+  getGameList(
+    ordering: string,
+    search?: string
+  ): Observable<APIResponse<Game>> {
     let params = new HttpParams().set('ordering', ordering);
-  
+
     if (search) {
       params = new HttpParams().set('ordering', ordering).set('search', search);
     }
 
-    return this.http.get(`${BASE_URL}/games`, { params: params });
+    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games`, {
+      params: params,
+    });
   }
 
-  getGameDetails(id: string) {
-    const gameInfoRequest = this.http.get(`${BASE_URL}/games/${id}`);
-    const gameTrailersRequest = this.http.get(`${BASE_URL}/games/${id}/movies`);
+  getGameDetails(id: string): Observable<Game> {
+    const gameInfoRequest = this.http.get(`${env.BASE_URL}/games/${id}`);
+    const gameTrailersRequest = this.http.get(
+      `${env.BASE_URL}/games/${id}/movies`
+    );
     const gameScreenshotsRequest = this.http.get(
-      `${BASE_URL}/games/${id}/screenshots`
+      `${env.BASE_URL}/games/${id}/screenshots`
     );
 
     return forkJoin({
@@ -34,7 +41,6 @@ export class HttpService {
       gameTrailersRequest,
     }).pipe(
       map((resp: any) => {
-        console.log(resp);
         return {
           ...resp['gameInfoRequest'],
           screenshots: resp['gameScreenshotsRequest']?.results,

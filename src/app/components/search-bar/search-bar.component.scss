@@ -6,6 +6,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
   }
 
   &-form {
@@ -34,13 +38,13 @@
     border-bottom-right-radius: 5px;
     color: #fff;
     font-weight: 700;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     cursor: pointer;
 
     &:hover {
-        color: #3f51b5;
-        background-color: #fff;
-        border: 1px solid #3f51b5;
+      color: #3f51b5;
+      background-color: #fff;
+      border: 1px solid #3f51b5;
     }
   }
 }
