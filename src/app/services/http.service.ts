@@ -6,10 +6,11 @@ import { environment as env } from 'src/environments/environment';
 import { APIResponse, Game } from '../models';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class HttpService {
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
   getGameList(
     ordering: string,

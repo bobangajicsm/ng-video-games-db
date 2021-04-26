@@ -44,8 +44,8 @@
     <mat-tab label="Trailers" *ngIf="game.trailers?.length">
       <video
         class="game-trailer"
-        *ngFor="let trailer of game.trailers"
         controls
+        *ngFor="let trailer of game.trailers"
       >
         <source src="{{ trailer.data?.max }}" type="video/mp4" />
         Your browser does not support the video tag.
